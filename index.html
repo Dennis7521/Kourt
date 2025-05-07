@@ -201,6 +201,19 @@
             <div class="hello-kitty-frame kitty3"></div>
             <div class="hello-kitty-frame kitty4"></div>
         </div>
+
+        <div class="music-player">
+            <div class="music-controls">
+                <button class="play-btn" id="playBtn">▶</button>
+                <div class="song-title" id="songTitle">New West-Those eyes</div>
+            </div>
+        </div>
+        
+        <audio id="bgMusic" loop>
+            <!-- Replace with your actual audio file -->
+            <source src="ThoseEyes.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
         
         <button class="btn" id="motivateBtn">Sparkle Me Up!</button>
         
@@ -333,6 +346,30 @@
         setInterval(() => {
             createSparkles();
         }, 1000);
+
+        //song
+         const bgMusic = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const songTitle = document.getElementById('songTitle');
+        let isPlaying = false;
+        
+        // Update with your actual song name
+        const songs = [
+            { title: "Those Eyes", file: "ThoseEyes.mp3" },
+        ];
+        
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                playBtn.textContent = "▶";
+            } else {
+                bgMusic.play();
+                playBtn.textContent = "❚❚";
+            }
+            isPlaying = !isPlaying;
+        });
+
+        
     </script>
 </body>
 </html>
